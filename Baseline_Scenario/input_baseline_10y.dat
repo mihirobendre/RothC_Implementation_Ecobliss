@@ -2,7 +2,7 @@ example input data to run RothC for a number of years
 clay and depth are only needed once, other data are monthly jan-dec 
  (%)     (cm)  (t C/ha)      (-)
 clay	depth	    iom   nsteps
-18.0	30.0	 3.0041      0
+18.0	30.0	 2.524      0
 (-)    (-)       (%)    (C)     (mm)    (mm)  (t C/ha) (t C/ha) (-)      (-) 
 year  month    modern	Tmp	Rain	Evap   C_inp	FYM	PC    DPM_RPM
 1	1	100	27.7	5.0	193.33	0	0	0	1.44
