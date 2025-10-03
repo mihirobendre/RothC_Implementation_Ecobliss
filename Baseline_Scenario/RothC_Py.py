@@ -1,4 +1,4 @@
-input_file_name = "input_baseline_10y.dat"
+input_file_name = "input_baseline.csv"
 
 ######################################################################################################################
 # 
@@ -279,7 +279,7 @@ os.chdir(script_dir)
 #print(os.getcwd())
 
 # read in RothC input data file
-df_head = pd.read_csv(input_file_name, skiprows = 3, header = 0, nrows = 1, index_col=None, sep=r'\s+') 
+df_head = pd.read_csv(input_file_name, skiprows=3, header=0, nrows=1)
 clay = df_head.loc[0,"clay"]
 depth = df_head.loc[0,"depth"]
 #IOM = [df_head.loc[0,"iom"]]
@@ -314,7 +314,7 @@ TOC1=0.0
    
 #nsteps = df_head.loc[0,"nsteps"]
 
-df = pd.read_csv(input_file_name, skiprows = 6, header = 0, index_col=None, sep=r'\s+')
+df = pd.read_csv(input_file_name, skiprows=6, header=0)
 #print (df)
 df.columns =['t_year', 't_month', 't_mod', 't_tmp','t_rain','t_evap', 't_C_Inp', 't_FYM_Inp', 't_PC', 't_DPM_RPM']
 total_rows = len(df)
