@@ -1,5 +1,6 @@
 input_file_name = "input_project.csv"
-
+carbon_input = 1.980596942 # annual input
+farmyard_manure = 0.1 * 0.5535 # annual input
 ######################################################################################################################
 # 
 #  RothC python version    
@@ -286,6 +287,7 @@ depth = df_head.loc[0,"depth"]
 
 # set initial pool values 
 soc = 39.63
+#soc = 0
 SOC = [soc]
 
 #RPM = [0.0]
@@ -345,9 +347,12 @@ while (test > 1E-6):
     
     PC = df.t_PC[k]
     DPM_RPM = df.t_DPM_RPM[k]
+
+    C_Inp = carbon_input/12
+    # C_Inp = df.t_C_Inp[k]
     
-    C_Inp = df.t_C_Inp[k]
-    FYM_Inp = df.t_FYM_Inp[k]
+    FYM_Inp = farmyard_manure/12
+	# FYM_Inp = df.t_FYM_Inp[k]
     
     modernC = df.t_mod[k] / 100.0   
 
@@ -378,15 +383,18 @@ for  i in range(timeFact, nsteps):
     
     PC = df.t_PC[i]
     DPM_RPM = df.t_DPM_RPM[i]
+
+    C_Inp = carbon_input/12
+    #C_Inp = df.t_C_Inp[i]
     
-    C_Inp = df.t_C_Inp[i]
-    FYM_Inp = df.t_FYM_Inp[i]
+    FYM_Inp = farmyard_manure/12
+	# FYM_Inp = df.t_FYM_Inp[i]
     
     modernC = df.t_mod[i] / 100.0
     
     RothC(timeFact, DPM,RPM,BIO,HUM,IOM, SOC, DPM_Rage, RPM_Rage, BIO_Rage, HUM_Rage, Total_Rage, \
-          modernC, clay, depth,TEMP,RAIN,PEVAP,PC,DPM_RPM, C_Inp, FYM_Inp, SWC)  
-         
+          modernC, clay, depth,TEMP,RAIN,PEVAP,PC,DPM_RPM, C_Inp, FYM_Inp, SWC)
+    
     Total_Delta = (np.exp(-Total_Rage[0]/8035.0) - 1.0) * 1000.0
     
     #print(C_Inp, FYM_Inp, TEMP, RAIN, PEVAP, SWC[0],  PC,  DPM[0],RPM[0],BIO[0],HUM[0], IOM[0], SOC[0])
