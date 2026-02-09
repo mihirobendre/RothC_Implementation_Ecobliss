@@ -1,10 +1,10 @@
 import pandas as pd
 
 # Path to your Excel file
-excel_file = 'ECOBLISS_SOIL_ANALYSIS_2025.xlsx'
+excel_file = 'Ecobliss_SOC_Data.xlsx'
 
 # Name of the sheet you want to read
-sheet_name = 'SOC'  # Change this to your actual sheet name
+sheet_name = 'Organic_Carbon'  # Change this to your actual sheet name
 
 # Read the specific sheet into a DataFrame
 df_soc = pd.read_excel(excel_file, sheet_name=sheet_name)
@@ -15,13 +15,13 @@ df_soc = pd.read_excel(excel_file, sheet_name=sheet_name)
 
 # Sorting our data by depth
 # DataFrame where Depth (cm) == "0-15"
-df_0_15 = df_soc[df_soc["Depth(cm)"].str.startswith("0")]
+df_0_15 = df_soc[df_soc["Depth (cm)"].str.startswith("0")]
 
 # DataFrame where Depth (cm) == "15-30"
-df_15_30 = df_soc[df_soc["Depth(cm)"].str.startswith("15")]
+df_15_30 = df_soc[df_soc["Depth (cm)"].str.startswith("15")]
 
 # Bulk density mean calculation
-sheet_name = 'BULK_DENSITY'
+sheet_name = 'Bulk_Density'
 df_bd = pd.read_excel(excel_file, sheet_name=sheet_name)
 bd_col = 'Bulk Density (g/cm3)'
 bd_mean = df_bd[bd_col].mean(skipna=True)
